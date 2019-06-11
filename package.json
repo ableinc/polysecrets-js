@@ -1,0 +1,27 @@
+{
+  "name": "polysecrets",
+  "version": "0.1.1",
+  "description": "A completely randomized order of secrets, with security in mind.",
+  "main": "lib/main.js",
+  "directories": {
+    "lib": "lib",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ableinc/polysecrets-npm.git"
+  },
+  "author": "Jaylen A. Douglas (Able Inc)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ableinc/polysecrets-npm/issues"
+  },
+  "homepage": "https://github.com/ableinc/polysecrets-npm#readme",
+  "dependencies": {
+    "commander": "^2.20.0",
+    "uuid": "^3.3.2"
+  }
+}
