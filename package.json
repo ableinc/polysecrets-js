@@ -8,7 +8,8 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "node test.js"
+    "automated": "node examples/polysecrets_automated.js",
+    "manual": "node examples/polysecrets_manual.js"
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,7 @@
   "homepage": "https://github.com/ableinc/polysecrets-npm#readme",
   "dependencies": {
     "commander": "^2.20.0",
+    "mongodb": "^3.2.7",
     "uuid": "^3.3.2"
   }
 }

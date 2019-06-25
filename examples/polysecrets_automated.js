@@ -7,7 +7,7 @@ config = {
     uuid: true, // default (options: true, false, "Both")
     mixcase: false, // default
     secret: 'rAnd0m_s3cr3t',  // default (not required)
-    persistence: {}, // or false / default: false
+    persistence: false, // default: false | {host: 'localhost', port: 27017, db: 'polysecrets', collection: 'secrets'}
     verbose: true
   }
 
