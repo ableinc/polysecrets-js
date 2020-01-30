@@ -7,19 +7,17 @@ config = {
     uuid: true, // default (options: true, false, "Both")
     mixcase: false, // default
     secret: 'rAnd0m_s3cr3t',  // default (not required)
-    persistence: false, // default: false | {host: 'localhost', port: 27017, db: 'polysecrets', collection: 'secrets'}
     verbose: true
   }
 
 
 function polysecrets_automated () {
-  let automated = new Polysecrets(config)
+  let automated = new Polysecrets(config) // new Polysecrets(config, true) - true will clear the secret from your environment
   automated.execute()
   automated.terminate()
 }
 
 process.on('SIGINT', () => {
-  CONTINUE_LOOP = false
   process.exit()
 })
 

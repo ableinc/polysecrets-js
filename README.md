@@ -19,7 +19,7 @@ npm run automated
 
 Npm
 ```bash
-npm install (-g) polysecrets-js
+npm install --save polysecrets-js
 ```
 
 # How To Use
@@ -40,8 +40,7 @@ config = {
     uuid: true, // default (options: true, false, "Both")
     mixcase: false, // default
     secret: 'rAnd0m_s3cr3t',  // default (not required)
-    persistence: {}, // or false / default: false
-    verbose: true // default = false - this will print the secret to the console
+    verbose: true // default = false
   }
 // alternatively you could do config = {}
 function polysecrets_automated () {
@@ -51,7 +50,6 @@ function polysecrets_automated () {
 }
 
 process.on('SIGINT', () => {
-  CONTINUE_LOOP = false
   process.exit()
 })
 
@@ -63,12 +61,10 @@ const { Polysecrets } = require('polysecrets')
 
 config = {
     automated: false,
-    interval: 30,
     length: 15,
     uuid: true,
     mixcase: false,
-    secret: 'rAnd0m_s3cr3t',
-    persistence: {}
+    secret: 'rAnd0m_s3cr3t'
   }
 // alternatively you could do config = {}
 function polysecrets_manual () {
@@ -117,3 +113,9 @@ provide I would recommend going the traditional route; add secret to your projec
 .env file and use the dotenv package library.
 
 - You cannot run manual and automated in the same file. You will throw an error.
+
+
+# Persistence
+- Do not include persistence as an empty object. Omit if you're not using it.
+
+- Only configured for MongoDB. If you'd like SQL, create a PR.
