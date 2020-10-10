@@ -13,14 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ableinc/polysecrets-npm.git"
+    "url": "git+https://github.com/ableinc/polysecrets-js.git"
   },
   "author": "Jaylen A. Douglas (Able Inc)",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ableinc/polysecrets-npm/issues"
+    "url": "https://github.com/ableinc/polysecrets-js/issues"
   },
-  "homepage": "https://github.com/ableinc/polysecrets-npm#readme",
+  "homepage": "https://github.com/ableinc/polysecrets-js#readme",
   "dependencies": {
     "commander": "^2.20.0",
     "mongodb": "^3.2.7",
