@@ -92,6 +92,23 @@ You can do the following with Polysecrets-js:
 The CLI (below) has full details of each option (except automated option)
 
 # Polysecrets-js CLI 
+```bash
+Usage: polysecrets [options]
+
+A completely randomized order of secrets, with security in mind.
+
+Options:
+  -v                         output the version number
+  -s, --secret [value]       The secret string (default: "rAnd0m_s3cr3+")
+  -a, --automated [value]    Whether automatically produce secrets after every interval (default: false)
+  -i, --interval [value]     How frequently should a new secret be generated (seconds) (default: 30)
+  -l, --length [value]       Length of the secret. Secret has a minimum length of 10 (default: 10)
+  -u, --uuid [value]         Whether to use UUIDs or Alphanumeric characters for secret generation - [true, false, "Both"] (default: true)
+  -m, --mixcase [value]      Decide whether or not to mix the case of alpha characters in secret string (default: false)
+  -vV, --verbose [value]     Feedback through console. (default: true)
+  -p, --persistence [value[  Persist generated secrets to avoid duplicates. (default: {})
+  -h, --help                 output usage information
+ ```
 
 # Benefits
 * JSON Web Tokens
