@@ -10,7 +10,8 @@
   "dependencies": {
     "commander": "^2.20.0",
     "mongodb": "^3.2.7",
-    "uuid": "^3.3.2"
+    "uuid": "^3.3.2",
+    "bson": ">=1.1.4"
   },
   "devDependencies": {},
   "scripts": {
