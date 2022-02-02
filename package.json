@@ -1,6 +1,6 @@
 {
   "name": "polysecrets",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A completely randomized order of secrets, with security in mind.",
   "keywords": ["secrets", "json web tokens", "hasing", "signing", "certificates", "security", "tokens",
   "javascript", "web development", "web security", "application security", "security", "js", "Cryptography"],
@@ -26,9 +26,18 @@
     "url": "git+https://github.com/ableinc/polysecrets-js.git"
   },
   "author": "Able Inc. (Jaylen Douglas)",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/ableinc/polysecrets-js/issues"
   },
-  "homepage": "https://github.com/ableinc/polysecrets-js#readme"
+  "homepage": "https://github.com/ableinc/polysecrets-js#readme",
+  "contributors": [
+    { "name": "Jaylen Douglas" }
+  ],
+  "bin": {
+    "polysecrets": "./lib/cli.js"
+  },
+  "engines": {
+    "node": ">=12"
+  }
 }

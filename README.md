@@ -1,4 +1,4 @@
-# Polysecrets (v1.0.1)
+# Polysecrets (v1.0.2)
 
 ![alt text](https://img.icons8.com/dotty/80/000000/mesh.png "Polysecrets Logo")
 A completely randomized order of secrets; built with security in mind. Secrets can be automatically generated
@@ -14,9 +14,6 @@ Locally
 git clone https://github.com/ableinc/polysecrets-js.git
 cd polysecrets-js
 npm install
-npm run manual
-# or
-npm run automated
 ```
 
 Npm
@@ -27,12 +24,24 @@ npm install --save polysecrets
 
 ## How To Use
 
-Polysecrets-js can be used manually or automated. Automated use can be provided a time (in seconds) for
-how often a new secret should be generated, the default time is set to 30 seconds. You do not have
-to provide a secret to Polysecrets class, but you can if you'd like certain characters in your secret. Reminder, the secret is a collection of randomly ordered characters, so the secret you provide will not be used entirely. You can choose whether or not to have a mix of upper and lower case letters in the final secret output. By default the case is kept how ever its provided.
+Polysecrets can be used manually or automated. Automated use can be provided a time (in seconds) for
+how often a new secret should be generated, the default time is set to 30 seconds. You do not have to provide a secret to Polysecrets class, but you can if you'd like certain characters in your secret. Reminder, the secret is a collection of randomly ordered characters, so the secret you provide will not be used entirely. You can choose whether or not to have a mix of upper and lower case letters in the final secret output. By default the case is kept how ever its provided.
 
-**Look through examples folder**
-Automated (this will add the secret to your environment)
+***Manual***
+
+```javascript
+const { Polysecrets } = require('polysecrets')
+
+// this example uses the default configuration variables
+const polysecret = new Polysecrets()
+async function polysecrets_manual () {
+  const secret = await polysecret.execute()
+  console.log(secret)
+}
+polysecrets_manual()
+```
+
+***Automated*** (this will add the secret to your environment)
 
 ```javascript
 const { Polysecrets } = require('polysecrets')
@@ -42,46 +51,30 @@ const { Polysecrets } = require('polysecrets')
 // use config parameter field
 config = {
     automated: true,
-    interval: 5,
-    length: 10,
-    uuid: true,
-    mixcase: false,
-    secret: 'rAnd0m_s3cr3t',
     verbose: true
   }
 function polysecrets_automated () {
-  let automated = new Polysecrets(config)
+  const automated = new Polysecrets(config)
   automated.execute()
-  automated.terminate()
-}
 
-process.on('SIGINT', () => {
-  process.exit()
-})
+  process.on('SIGINT', () => {
+    automated.terminate()
+  })
+}
 
 polysecrets_automated()
 ```
 
-```javascript
-const { Polysecrets } = require('polysecrets')
+## Examples
 
-// do not provide an empty config.
-// to use defaults, please do not
-// use config parameter field
-config = {
-    automated: false,
-    length: 15,
-    uuid: true,
-    mixcase: false,
-    secret: 'rAnd0m_s3cr3t'
-  }
+For examples you can run the files found in the ```/examples``` folder.
+If you've installed Polysecrets via ```git``` then ```cd``` into the repo
+directory and run either of the following commands:
 
-async function polysecrets_manual () {
-  const polysecret = new Polysecrets(config)
-  const secret = await secret.execute()
-  return secret
-}
-polysecrets_manual()
+```bash
+npm run manual
+
+npm run automated
 ```
 
 ## Options
@@ -94,8 +87,6 @@ You can do the following with Polysecrets-js:
 * Choose whether to generate secrets with just UUIDs, Alphanumeric characters or both
 * Choose whether to mix the case of each letter in the secret. i.e. a mix of upper and lower case letters (hELlO).
 * Persist generated secrets to ensure the same secret isn't used twice
-
-The CLI (below) has full details of each option (except automated option)
 
 ## Polysecrets-js CLI
 
@@ -124,7 +115,7 @@ Options:
 * Hashing
 * Various scenarios of Cryptography
 
-## Note
+## Notes
 
 * If you change the length of the secret via the 'length' parameter, you will notice that the
 secret string you provided will not contain all the characters provided. If you want the final
@@ -142,7 +133,7 @@ provide I would recommend going the traditional route; add secret to your projec
 
 * Do not include persistence as an empty object. Omit if you're not using it and set flag ```usePersistence``` to ```false```.
 
-* Only configured for MongoDB. If you'd like SQL, create a PR.
+* Only created for MongoDB. If you'd like SQL, create a PR.
 
 ## Default Configuration Options
 
@@ -151,9 +142,9 @@ Below are the default configuration options. You'll notice that ```usePersistenc
 ```javascript
 {
     automated: false, 
-    interval: 30, 
+    interval: 30, // seconds
     length: 10, 
-    uuid: true, // default (options: true, false, "Both")
+    uuid: true, // (options: true, false, "Both")
     mixcase: false,
     secret: 'rAnd0m_s3cr3+',
     verbose: false,
@@ -162,7 +153,26 @@ Below are the default configuration options. You'll notice that ```usePersistenc
   }
 ```
 
+You can also import the ```Config``` function as such:
+
+```javascript
+const { Config } = require('polysecrets')
+
+const config = Config() // returns an Object
+````
+
 ## Changelog
+
+***February 2022*** v1.0.2
+
+* Simplified code in main module
+* Simplified code in CLI tool
+* Fixed bug with secret being displayed during automated call
+* The secret will now only be removed when clearing env variables, instead of clearing all variables
+* Fixed bug with persistence where secret was being added before the duplication check
+* Updated verbose messages
+* Command line tool will be added to path automatically
+* Updated documentation
 
 ***February 2022*** v1.0.1
 
