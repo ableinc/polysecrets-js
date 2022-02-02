@@ -2,6 +2,8 @@
   "name": "polysecrets",
   "version": "1.0.1",
   "description": "A completely randomized order of secrets, with security in mind.",
+  "keywords": ["secrets", "json web tokens", "hasing", "signing", "certificates", "security", "tokens",
+  "javascript", "web development", "web security", "application security", "security", "js", "Cryptography"],
   "main": "lib/main.js",
   "directories": {
     "example": "examples",
