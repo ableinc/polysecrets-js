@@ -9,15 +9,10 @@ config = {
     verbose: false // default
   }
 
-function polysecrets_manual () {
-  let secret = new Polysecrets(config)
-  secret.execute()
-    .then((secret) => {
-      typeof secret === 'undefined' ? console.log('Manual - No secret') : console.log('Manual - Secret: ', secret)
-    })
-    .catch((err) => {
-      throw err
-    })
+async function polysecrets_manual () {
+  let polysecret = new Polysecrets(config)
+  const secret = await polysecret.execute()
+  console.log('Manual - Secret: ', secret)
 }
 
 polysecrets_manual()
