@@ -27,12 +27,15 @@ Polysecrets-js can be used manually or automated. Automated use can be provided 
 how often a new secret should be generated, the default time is set to 30 seconds. You do not have
 to provide a secret to Polysecrets class, but you can if you'd like certain characters in your secret. Reminder, the secret is a collection of randomly ordered characters, so the secret you provide will not be used entirely. You can choose whether or not to have a mix of upper and lower case letters in the final secret output. By default the case is kept how ever its provided.<br />
 
-** Look through examples folder ** <br />
+**Look through examples folder** <br />
 Automated (this will add the secret to your environment)
 
 ```javascript
 const { Polysecrets } = require('polysecrets')
 
+// do not provide an empty config.
+// to use defaults, please do not
+// use config parameter field
 config = {
     automated: true, // default = false
     interval: 5, // default = 30
@@ -42,7 +45,6 @@ config = {
     secret: 'rAnd0m_s3cr3t',  // default (not required)
     verbose: true // default = false
   }
-// alternatively you could do config = {}
 function polysecrets_automated () {
   let automated = new Polysecrets(config)
   automated.execute()
@@ -59,6 +61,9 @@ polysecrets_automated()
 ```javascript
 const { Polysecrets } = require('polysecrets')
 
+// do not provide an empty config.
+// to use defaults, please do not
+// use config parameter field
 config = {
     automated: false,
     length: 15,
@@ -66,18 +71,12 @@ config = {
     mixcase: false,
     secret: 'rAnd0m_s3cr3t'
   }
-// alternatively you could do config = {}
-function polysecrets_manual () {
-  let secret = new Polysecrets(config)
-  secret.execute()
-    .then((secret) => {
-      typeof secret === 'undefined' ? console.log('Manual - No secret') : console.log('Manual - Secret: ', secret)
-    })
-    .catch((err) => {
-      throw err
-    })
-}
 
+async function polysecrets_manual () {
+  const polysecret = new Polysecrets(config)
+  const secret = await secret.execute()
+  return secret
+}
 polysecrets_manual()
 ```
 
@@ -101,7 +100,6 @@ The CLI (below) has full details of each option (except automated option)
 * Various scenarios of Cryptography
 
 # Note
-
 - If you change the length of the secret via the 'length' parameter, you will notice that the 
 secret string you provided will not contain all the characters provided. If you want the final
 secret to contain all the exact same characters, then provide the exact string length to 
@@ -116,6 +114,21 @@ provide I would recommend going the traditional route; add secret to your projec
 
 
 # Persistence
-- Do not include persistence as an empty object. Omit if you're not using it.
-
+- Do not include persistence as an empty object. Omit if you're not using it and set flag ```usePersistence``` to ```false```.
 - Only configured for MongoDB. If you'd like SQL, create a PR.
+
+# Default Configuration Options
+Below are the default configuration options. You'll notice that ```usePersistence``` is ```false```, but we're setting ```persistence```. This is for the programs use only. If you are providing your own config and ```usePersistence``` is ```false```, **DO NOT** set ```persistence```
+```javascript
+{
+    automated: false, 
+    interval: 30, 
+    length: 10, 
+    uuid: true, 
+    mixcase: false,
+    secret: 'rAnd0m_s3cr3+',
+    verbose: false,
+    usePersistence: false,
+    persistence: {host: 'localhost', port: 27017, db: 'polysecrets', collection: 'secrets'}
+  }
+```
