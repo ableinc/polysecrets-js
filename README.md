@@ -19,7 +19,7 @@ npm run automated
 
 Npm
 ```bash
-npm install --save polysecrets-js
+npm install --save polysecrets
 ```
 
 # How To Use
