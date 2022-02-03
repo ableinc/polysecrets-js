@@ -36,7 +36,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ableinc/polysecrets-js.git"
+    "url": "git@github.com:ableinc/polysecrets-js.git"
   },
   "author": "Able Inc. (Jaylen Douglas)",
   "license": "MIT",
