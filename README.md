@@ -22,6 +22,13 @@ Npm
 npm install --save polysecrets
 ```
 
+Command Line Tool
+
+```bash
+npm install -g polysecrets
+polysecrets
+```
+
 ## How To Use
 
 Polysecrets can be used manually or automated. Automated use can be provided a time (in seconds) for
@@ -115,6 +122,7 @@ Options:
 * Certificate Signing
 * Hashing
 * Various scenarios of Cryptography
+* Blockchain signing
 
 ## Notes
 
