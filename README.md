@@ -1,4 +1,4 @@
-# Polysecrets (v1.0.3)
+# Polysecrets (v1.0.4)
 
 ![alt text](https://img.icons8.com/dotty/80/000000/mesh.png "Polysecrets Logo")
 A completely randomized order of secrets; built with security in mind. Secrets can be automatically generated
@@ -157,6 +157,7 @@ Below are the default configuration options. You'll notice that ```usePersistenc
     mixcase: false,
     secret: 'rAnd0m_s3cr3+',
     verbose: false,
+    secretKeyName: 'secret',
     usePersistence: false,
     persistence: {host: 'localhost', port: 27017, db: 'polysecrets', collection: 'secrets'}
   }
@@ -170,7 +171,26 @@ const { Config } = require('polysecrets')
 const config = Config() // returns an Object
 ````
 
+## Time.sleep()
+
+Polysecrets comes with a sleep function, similar to the ```time.sleep()``` function found in Python. You can use this function for any purpose you need, as Polysecrets no longer requires this function. Below is an example of how to use it.
+
+```javascript
+const { Time } = require('polysecrets')
+
+async function sleep () {
+  // sleep for 5 seconds
+  // then run an operation
+  await Time.sleep(5)
+  console.log('5 seconds have passed...Hello!')
+}
+```
+
 ## Changelog
+
+***February 2022*** v1.0.4
+
+* Added a new configuration key; secretKeyName. This will be used for the automated feature, when setting the secret as an environment variable. By default it will be called ```secret```
 
 ***February 2022*** v1.0.3
 
