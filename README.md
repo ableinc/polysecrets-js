@@ -1,4 +1,4 @@
-# Polysecrets (v1.0.2)
+# Polysecrets (v1.0.3)
 
 ![alt text](https://img.icons8.com/dotty/80/000000/mesh.png "Polysecrets Logo")
 A completely randomized order of secrets; built with security in mind. Secrets can be automatically generated
@@ -51,14 +51,15 @@ const { Polysecrets } = require('polysecrets')
 // use config parameter field
 config = {
     automated: true,
-    verbose: true
+    verbose: true,
+    interval: 5
   }
 function polysecrets_automated () {
-  const automated = new Polysecrets(config)
-  automated.execute()
+  const polysecrets = new Polysecrets(config)
+  polysecrets.execute()
 
   process.on('SIGINT', () => {
-    automated.terminate()
+    polysecrets.terminate()
   })
 }
 
@@ -162,6 +163,13 @@ const config = Config() // returns an Object
 ````
 
 ## Changelog
+
+***February 2022*** v1.0.3
+
+* Updated CLI tool
+* Fixed automated bug binding issue
+* Updated ```examples/``` folder
+* Updated documentation
 
 ***February 2022*** v1.0.2
 
