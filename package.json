@@ -1,6 +1,6 @@
 {
   "name": "polysecrets",
-  "version": "1.0.3",
+  "version": "2.0.0",
   "description": "A completely randomized order of secrets, with security in mind.",
   "keywords": [
     "secrets",
@@ -23,16 +23,21 @@
     "lib": "lib"
   },
   "dependencies": {
+    "bson": ">=1.1.4",
     "commander": "^2.20.0",
+    "eslint": "^8.46.0",
     "mongodb": "^3.2.7",
-    "uuid": "^3.3.2",
-    "bson": ">=1.1.4"
+    "prettier": "^2.8.8"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "mongodb": "^5.7.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "automated": "node examples/polysecrets_automated.js",
-    "manual": "node examples/polysecrets_manual.js"
+    "manual": "node examples/polysecrets_manual.js",
+    "lint": "npx eslint",
+    "lint:fix": "npx eslint --fix"
   },
   "repository": {
     "type": "git",

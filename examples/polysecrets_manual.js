@@ -1,16 +1,12 @@
-const { Polysecrets } = require('../lib/main')
+const { Polysecrets, Config } = require("../lib/main");
 
-config = {
-    length: 25,
-    uuid: false,
-    mixcase: true,
-    secret: 'thIS_rAnd0m_s3cr3t',
-  }
+const config = Config();
+config.length = 25;
 
-async function polysecrets_manual () {
-  let polysecret = new Polysecrets(config)
-  const secret = await polysecret.execute()
-  console.log('(Manual) Secret: ', secret)
+function polysecrets_manual() {
+  let polysecret = new Polysecrets(config);
+  const secret = polysecret.execute();
+  console.log("(Manual) Secret: ", secret);
 }
 
-polysecrets_manual()
+polysecrets_manual();
